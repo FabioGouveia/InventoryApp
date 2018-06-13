@@ -45,6 +45,8 @@ public class InventoryActivity extends AppCompatActivity {
                 insertData();
             }
         });
+
+        queryData();
     }
 
     private void insertData() {
@@ -107,7 +109,11 @@ public class InventoryActivity extends AppCompatActivity {
                     resultString.append(line);
                 }
 
-                queryResultTextView.setText(resultString.toString());
+                if (resultString.toString().isEmpty()) {
+                    queryResultTextView.setText(getString(R.string.no_data_to_show));
+                } else {
+                    queryResultTextView.setText(resultString.toString());
+                }
 
             } finally {
                 cursor.close();
