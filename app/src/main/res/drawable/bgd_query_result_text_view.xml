@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
     <solid android:color="#FFFFFF" />
+    <padding
+        android:bottom="@dimen/dimen_s"
+        android:left="@dimen/dimen_s"
+        android:right="@dimen/dimen_s"
+        android:top="@dimen/dimen_s" />
     <corners android:radius="@dimen/dimen_s" />
     <stroke
         android:width="@dimen/result_text_view_border"
