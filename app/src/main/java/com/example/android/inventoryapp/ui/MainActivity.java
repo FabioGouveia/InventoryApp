@@ -1,7 +1,7 @@
-package com.example.android.inventoryapp;
+package com.example.android.inventoryapp.ui;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
 import com.example.android.inventoryapp.R;
 
