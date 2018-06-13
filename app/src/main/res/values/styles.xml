@@ -11,4 +11,8 @@
         <item name="android:layout_height">match_parent</item>
     </style>
 
+    <style name="LargeView.Vertical">
+        <item name="android:orientation">vertical</item>
+    </style>
+
 </resources>
