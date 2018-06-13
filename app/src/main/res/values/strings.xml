@@ -2,6 +2,7 @@
     <string name="app_name">Inventory App</string>
 
     <string name="error_while_fetching_data">An error occurred while query the data</string>
+    <string name="no_data_to_show">Insert some data</string>
 
     <string name="button_add_dummy_data">Add some dummy data</string>
 
