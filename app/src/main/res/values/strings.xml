@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Inventory App</string>
+
+    <string name="button_add_dummy_data">Add some dummy data</string>
 </resources>
