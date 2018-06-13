@@ -1,5 +1,11 @@
 <resources>
     <string name="app_name">Inventory App</string>
 
+    <string name="error_while_fetching_data">An error occurred while query the data</string>
+
     <string name="button_add_dummy_data">Add some dummy data</string>
+
+    <string name="dummy_product_name">Product %1$d</string>
+    <string name="dummy_product_supplier_name">Supplier: Carl</string>
+    <string name="dummy_product_supplier_phone_number">Phone +1 666&#8211;4320&#8211;8900</string>
 </resources>
