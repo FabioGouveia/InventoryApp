@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout style="@style/LargeView.Vertical">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/InventoryActivityRootView">
 
+    <TextView
+        android:id="@+id/query_result_text_view"
+        style="@style/QueryResultTextView" />
+
+    <Button
+        android:id="@+id/add_dummy_data_button"
+        style="@style/DummyInsertButton" />
 
 </LinearLayout>
