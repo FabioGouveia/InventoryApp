@@ -6,6 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.provider.BaseColumns;
 import android.support.v7.app.AppCompatActivity;
+import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -14,13 +15,7 @@ import android.widget.Toast;
 import com.example.android.inventoryapp.R;
 import com.example.android.inventoryapp.data.InventoryDbHelper;
 
-import static com.example.android.inventoryapp.data.InventoryContract.ProductEntry.COLUMN_PRODUCT_NAME;
-import static com.example.android.inventoryapp.data.InventoryContract.ProductEntry.COLUMN_PRODUCT_PRICE;
-import static com.example.android.inventoryapp.data.InventoryContract.ProductEntry.COLUMN_PRODUCT_QUANTITY;
-import static com.example.android.inventoryapp.data.InventoryContract.ProductEntry.COLUMN_PRODUCT_SUPPLIER_NAME;
-import static com.example.android.inventoryapp.data.InventoryContract.ProductEntry.COLUMN_PRODUCT_SUPPLIER_PHONE_NUMBER;
-import static com.example.android.inventoryapp.data.InventoryContract.ProductEntry.TABLE_NAME;
-import static com.example.android.inventoryapp.data.InventoryContract.ProductEntry._ID;
+import static com.example.android.inventoryapp.data.InventoryContract.ProductEntry.*;
 
 public class InventoryActivity extends AppCompatActivity {
 
@@ -37,6 +32,7 @@ public class InventoryActivity extends AppCompatActivity {
         dbHelper = new InventoryDbHelper(this);
 
         queryResultTextView = findViewById(R.id.query_result_text_view);
+        queryResultTextView.setMovementMethod(new ScrollingMovementMethod());
 
         Button insertDummyDataButton = findViewById(R.id.add_dummy_data_button);
         insertDummyDataButton.setOnClickListener(new View.OnClickListener() {
