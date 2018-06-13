@@ -49,6 +49,12 @@ public class InventoryActivity extends AppCompatActivity {
         queryData();
     }
 
+    @Override
+    protected void onDestroy() {
+        dbHelper.close();
+        super.onDestroy();
+    }
+
     private void insertData() {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
