@@ -6,4 +6,6 @@
 
     <color name="colorAccent">#42a5f5</color>
     <color name="colorAccentPressed">#00897b</color>
+
+    <color name="colorResultTextViewBackground">@color/colorPrimaryText</color>
 </resources>
