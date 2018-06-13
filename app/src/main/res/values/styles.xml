@@ -15,4 +15,29 @@
         <item name="android:orientation">vertical</item>
     </style>
 
+    <style name="AdaptableView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="InventoryActivityRootView" parent="LargeView.Vertical">
+        <item name="android:gravity">center</item>
+        <item name="android:padding">@dimen/dimen_m</item>
+    </style>
+
+    <style name="QueryResultTextView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:layout_marginBottom">@dimen/dimen_m</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:scrollbars">vertical</item>
+        <item name="android:background">@drawable/bgd_query_result_text_view</item>
+    </style>
+
+    <style name="DummyInsertButton" parent="AdaptableView">
+        <item name="android:background">@drawable/bgd_add_dummy_data_btn_selector</item>
+        <item name="android:text">@string/button_add_dummy_data</item>
+        <item name="android:textColor">@color/colorPrimaryText</item>
+    </style>
+
 </resources>
