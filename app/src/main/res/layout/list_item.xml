@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="@dimen/dimen_s">
+
+    <TextView
+        android:id="@+id/list_item_quantity_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dimen_m"
+        android:layout_marginRight="@dimen/dimen_m"
+        android:background="@drawable/bgd_circular"
+        android:gravity="center"
+        android:textColor="@color/colorPrimary" />
+
+    <TextView
+        android:id="@+id/list_item_product_name_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/list_item_quantity_text_view"
+        android:layout_toRightOf="@id/list_item_quantity_text_view"
+        android:textAppearance="?android:textAppearanceMedium"
+        tools:text="Product 1" />
+
+    <TextView
+        android:id="@+id/list_item_product_price_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/list_item_product_name_text_view"
+        android:layout_toEndOf="@id/list_item_quantity_text_view"
+        android:layout_toRightOf="@id/list_item_quantity_text_view"
+        android:textAppearance="?android:textAppearanceSmall"
+        tools:text="12.00 $" />
+
+    <Button
+        android:id="@+id/list_item_sale_button"
+        style="@style/SellButton" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/divider_height"
+        android:layout_below="@id/list_item_sale_button"
+        android:layout_marginLeft="72dp"
+        android:layout_marginStart="72dp"
+        android:background="@color/colorPrimaryDark" />
+
+</RelativeLayout>
