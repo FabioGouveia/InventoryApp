@@ -1,128 +1,114 @@
 package com.example.android.inventoryapp.ui;
 
-import android.content.ContentValues;
+import android.app.LoaderManager;
+import android.content.ContentUris;
+import android.content.CursorLoader;
+import android.content.Intent;
+import android.content.Loader;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.provider.BaseColumns;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
-import android.text.method.ScrollingMovementMethod;
 import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.view.ViewGroup;
+import android.widget.AbsListView;
+import android.widget.AdapterView;
+import android.widget.ListView;
 
 import com.example.android.inventoryapp.R;
-import com.example.android.inventoryapp.data.InventoryDbHelper;
+import com.example.android.inventoryapp.adapters.InventoryAdapter;
+import com.example.android.inventoryapp.data.InventoryContract;
 
 import static com.example.android.inventoryapp.data.InventoryContract.ProductEntry.*;
 
-public class InventoryActivity extends AppCompatActivity {
+public class InventoryActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
 
-    private InventoryDbHelper dbHelper;
-    private TextView queryResultTextView;
+    private static final int INVENTORY_LOADER = 0;
 
-    private int dummyNumber = 1;
+    private InventoryAdapter inventoryAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inventory);
+        final float displayDensity = getResources().getDisplayMetrics().density;
 
-        dbHelper = new InventoryDbHelper(this);
-
-        queryResultTextView = findViewById(R.id.query_result_text_view);
-        queryResultTextView.setMovementMethod(new ScrollingMovementMethod());
-
-        Button insertDummyDataButton = findViewById(R.id.add_dummy_data_button);
-        insertDummyDataButton.setOnClickListener(new View.OnClickListener() {
+        FloatingActionButton addInventoryFAB = findViewById(R.id.add_inventory_fab);
+        addInventoryFAB.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                insertData();
+            public void onClick(View view) {
+                startActivity(new Intent(InventoryActivity.this, ProductDetailsActivity.class));
+                overridePendingTransition(R.anim.enter_from_right_animation, R.anim.exit_to_left_animation);
             }
         });
 
-        queryData();
+        ListView inventoryList = findViewById(R.id.inventory_list_view);
+
+        inventoryAdapter = new InventoryAdapter(this, null);
+
+        inventoryList.setAdapter(inventoryAdapter);
+
+        int listDynamicFooterPadding = getResources().getInteger(R.integer.inventory_list_dynamic_footer_padding);
+        int footerViewHeightInPixels = (int) (listDynamicFooterPadding * displayDensity + 0.5f);
+
+        View inventoryListFooterView = new View(this);
+        inventoryListFooterView.setLayoutParams(new AbsListView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, footerViewHeightInPixels));
+
+        inventoryList.addFooterView(inventoryListFooterView);
+
+        inventoryList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> listView, View view, int position, long id) {
+
+                Intent productDetailIntent = new Intent(InventoryActivity.this, ProductDetailsActivity.class);
+                productDetailIntent.setData(ContentUris.withAppendedId(InventoryContract.ProductEntry.CONTENT_URI, id));
+
+                startActivity(productDetailIntent);
+                overridePendingTransition(R.anim.enter_from_right_animation, R.anim.exit_to_left_animation);
+            }
+        });
+
+        View emptyView = findViewById(R.id.empty_view);
+        inventoryList.setEmptyView(emptyView);
+
+        getLoaderManager().initLoader(INVENTORY_LOADER, null, this);
     }
 
     @Override
     protected void onDestroy() {
-        dbHelper.close();
         super.onDestroy();
     }
 
-    private void insertData() {
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
+    @Override
+    public Loader<Cursor> onCreateLoader(int loaderID, Bundle bundle) {
 
-        ContentValues values = new ContentValues();
-        values.put(COLUMN_PRODUCT_NAME, getString(R.string.dummy_product_name, dummyNumber));
-        values.put(COLUMN_PRODUCT_PRICE, (dummyNumber * 3));
-        values.put(COLUMN_PRODUCT_QUANTITY, (dummyNumber * 10));
-        values.put(COLUMN_PRODUCT_SUPPLIER_NAME, getString(R.string.dummy_product_supplier_name));
-        values.put(COLUMN_PRODUCT_SUPPLIER_PHONE_NUMBER, getString(R.string.dummy_product_supplier_phone_number));
+        switch (loaderID) {
+            case INVENTORY_LOADER:
 
-        long insertedRowId = db.insert(TABLE_NAME, null, values);
 
-        if (insertedRowId == -1) {
-            Toast.makeText(this, "An error occurred with data insertion", Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(this, "Data inserted successfully", Toast.LENGTH_SHORT).show();
-            dummyNumber++;
-            queryData();
+                String[] projection = {
+                        BaseColumns._ID,
+                        COLUMN_PRODUCT_NAME,
+                        COLUMN_PRODUCT_PRICE,
+                        COLUMN_PRODUCT_QUANTITY,
+                        COLUMN_PRODUCT_SUPPLIER_NAME,
+                        COLUMN_PRODUCT_SUPPLIER_PHONE_NUMBER
+                };
+
+                return new CursorLoader(this, CONTENT_URI, projection, null, null, null);
+            default:
+                return null;
         }
     }
 
-    private void queryData() {
-        SQLiteDatabase db = dbHelper.getReadableDatabase();
+    @Override
+    public void onLoadFinished(Loader<Cursor> loader, Cursor cursor) {
+        inventoryAdapter.swapCursor(cursor);
+    }
 
-        String[] projection = {
-                BaseColumns._ID,
-                COLUMN_PRODUCT_NAME,
-                COLUMN_PRODUCT_PRICE,
-                COLUMN_PRODUCT_QUANTITY,
-                COLUMN_PRODUCT_SUPPLIER_NAME,
-                COLUMN_PRODUCT_SUPPLIER_PHONE_NUMBER
-        };
-
-        Cursor cursor = db.query(TABLE_NAME, projection, null, null, null, null, null);
-
-        if (cursor != null) {
-
-            try {
-                int idColumnIndex = cursor.getColumnIndex(_ID);
-                int nameColumnIndex = cursor.getColumnIndex(COLUMN_PRODUCT_NAME);
-                int priceColumnIndex = cursor.getColumnIndex(COLUMN_PRODUCT_PRICE);
-                int quantityColumnIndex = cursor.getColumnIndex(COLUMN_PRODUCT_QUANTITY);
-                int supplierNameColumnIndex = cursor.getColumnIndex(COLUMN_PRODUCT_SUPPLIER_NAME);
-                int supplierPhoneNumberColumnIndex = cursor.getColumnIndex(COLUMN_PRODUCT_SUPPLIER_PHONE_NUMBER);
-
-                StringBuilder resultString = new StringBuilder();
-
-                String line;
-                while (cursor.moveToNext()) {
-
-                    line = cursor.getInt(idColumnIndex) + " : [" +
-                            cursor.getString(nameColumnIndex) + ", " +
-                            cursor.getDouble(priceColumnIndex) + ", " +
-                            cursor.getInt(quantityColumnIndex) + "]\n" +
-                            cursor.getString(supplierNameColumnIndex) + "/" +
-                            cursor.getString(supplierPhoneNumberColumnIndex) + "\n\n";
-
-                    resultString.append(line);
-                }
-
-                if (resultString.toString().isEmpty()) {
-                    queryResultTextView.setText(getString(R.string.no_data_to_show));
-                } else {
-                    queryResultTextView.setText(resultString.toString());
-                }
-
-            } finally {
-                cursor.close();
-            }
-
-        } else {
-            queryResultTextView.setText(getString(R.string.error_while_fetching_data));
-        }
+    @Override
+    public void onLoaderReset(Loader<Cursor> loader) {
+        inventoryAdapter.swapCursor(null);
     }
 }
