@@ -1,12 +1,28 @@
 <resources>
-    <string name="app_name">Inventory App</string>
+    <string name="app_name">Inventory</string>
 
-    <string name="error_while_fetching_data">An error occurred while query the data</string>
-    <string name="no_data_to_show">Insert some data</string>
+    <string name="plus_sign">+</string>
+    <string name="minus_sign">-</string>
 
-    <string name="button_add_dummy_data">Add some dummy data</string>
+    <string name="list_item_sell_button">Sell</string>
+    <string name="item_sold_message">%1$s sold</string>
+    <string name="no_more_items_message">You\'ve got no more items to sale..!</string>
 
-    <string name="dummy_product_name">Product %1$d</string>
-    <string name="dummy_product_supplier_name">Supplier: Carl</string>
-    <string name="dummy_product_supplier_phone_number">Phone +1 666&#8211;4320&#8211;8900</string>
+    <string name="menu_item_save">Save item</string>
+    <string name="menu_item_edit">Edit item</string>
+    <string name="menu_item_delete">Delete item</string>
+
+    <string name="product_name_input_hint">Product Name</string>
+    <string name="product_price_input_label">Price</string>
+    <string name="product_quantity_input_label">Quantity</string>
+    <string name="supplier_name_input_hint">Supplier Name</string>
+    <string name="supplier_phone_number_input_hint">Supplier Phone Number</string>
+
+    <string name="call_supplier_content_description">Order now</string>
+
+    <string name="error_product_name_empty">Product needs a name</string>
+    <string name="error_supplier_name_empty">Supplier needs a name</string>
+    <string name="error_supplier_phone_number_empty">Supplier needs a phone number</string>
+    <string name="error_while_fetching_data">An error occurred while fetching data</string>
+    <string name="empty_inventory">Use the plus button to add\nproducts into the inventory</string>
 </resources>
