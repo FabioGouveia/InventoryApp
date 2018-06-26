@@ -1,13 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    style="@style/InventoryActivityRootView">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/LargeView">
 
     <TextView
-        android:id="@+id/query_result_text_view"
-        style="@style/QueryResultTextView" />
+        android:id="@+id/inventory_list_header_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorInventoryListHeader"
+        android:padding="@dimen/dimen_m"
+        android:text="@string/inventory_list_header"
+        android:textAppearance="?android:textAppearanceSmall"
+        android:textColor="@color/colorSecondaryText" />
 
-    <Button
-        android:id="@+id/add_dummy_data_button"
-        style="@style/DummyInsertButton" />
+    <View
+        android:id="@+id/section_title_delimiter_view"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/section_title_delimiter_height"
+        android:layout_below="@id/inventory_list_header_text_view"
+        android:background="@color/colorInventoryListDelimiter" />
 
-</LinearLayout>
+    <ListView
+        android:id="@+id/inventory_list_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/section_title_delimiter_view"
+        android:divider="@android:color/transparent"
+        android:footerDividersEnabled="false"
+        android:headerDividersEnabled="false" />
+
+    <TextView
+        android:id="@+id/empty_view"
+        style="@style/EmptyView" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/add_inventory_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="@dimen/dimen_m"
+        android:layout_marginEnd="@dimen/dimen_m"
+        android:layout_marginRight="@dimen/dimen_m"
+        android:src="@drawable/ic_add_inventory"
+        app:backgroundTint="@color/colorPrimary"
+        app:fabSize="normal" />
+
+</RelativeLayout>
