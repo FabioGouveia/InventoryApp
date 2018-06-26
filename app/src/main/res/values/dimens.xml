@@ -1,7 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <dimen name="app_padding">@dimen/dimen_m</dimen>
+
+    <dimen name="dimen_xs">4dp</dimen>
     <dimen name="dimen_s">8dp</dimen>
     <dimen name="dimen_m">16dp</dimen>
+    <dimen name="dimen_l">20dp</dimen>
 
-    <dimen name="result_text_view_border">2dp</dimen>
+    <dimen name="section_title_delimiter_height">@dimen/dimen_xs</dimen>
+
+    <dimen name="divider_height">1dp</dimen>
+    <dimen name="inventory_list_divider_margin">72dp</dimen>
+
+    <dimen name="small_button_min_width">40dp</dimen>
+    <dimen name="small_button_min_height">36dp</dimen>
+
+    <dimen name="quantity_counter_text_size">60sp</dimen>
 </resources>
