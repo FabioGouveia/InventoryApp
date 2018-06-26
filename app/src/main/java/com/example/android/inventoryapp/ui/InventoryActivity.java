@@ -15,18 +15,25 @@ import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.android.inventoryapp.R;
 import com.example.android.inventoryapp.adapters.InventoryAdapter;
 import com.example.android.inventoryapp.data.InventoryContract;
 
-import static com.example.android.inventoryapp.data.InventoryContract.ProductEntry.*;
+import static com.example.android.inventoryapp.data.InventoryContract.ProductEntry.COLUMN_PRODUCT_NAME;
+import static com.example.android.inventoryapp.data.InventoryContract.ProductEntry.COLUMN_PRODUCT_PRICE;
+import static com.example.android.inventoryapp.data.InventoryContract.ProductEntry.COLUMN_PRODUCT_QUANTITY;
+import static com.example.android.inventoryapp.data.InventoryContract.ProductEntry.COLUMN_PRODUCT_SUPPLIER_NAME;
+import static com.example.android.inventoryapp.data.InventoryContract.ProductEntry.COLUMN_PRODUCT_SUPPLIER_PHONE_NUMBER;
+import static com.example.android.inventoryapp.data.InventoryContract.ProductEntry.CONTENT_URI;
 
 public class InventoryActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
 
     private static final int INVENTORY_LOADER = 0;
 
     private InventoryAdapter inventoryAdapter;
+    private TextView inventoryListHeaderTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +50,7 @@ public class InventoryActivity extends AppCompatActivity implements LoaderManage
             }
         });
 
+        inventoryListHeaderTextView = findViewById(R.id.inventory_list_header_text_view);
         ListView inventoryList = findViewById(R.id.inventory_list_view);
 
         inventoryAdapter = new InventoryAdapter(this, null);
@@ -104,6 +112,13 @@ public class InventoryActivity extends AppCompatActivity implements LoaderManage
 
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor cursor) {
+
+        if (cursor.getCount() == 0) {
+            inventoryListHeaderTextView.setVisibility(View.GONE);
+        } else {
+            inventoryListHeaderTextView.setVisibility(View.VISIBLE);
+        }
+
         inventoryAdapter.swapCursor(cursor);
     }
 
