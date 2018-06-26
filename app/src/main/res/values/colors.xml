@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorPrimaryText">#FFFFFF</color>
+    <color name="colorPrimary">#FAFAFA</color>
+    <color name="colorPrimaryDark">#B2B2B2</color>
+    <color name="colorPrimaryText">#000000</color>
+    <color name="colorSecondaryText">@color/colorAccent</color>
+    <color name="colorAccent">#999999</color>
+    <color name="colorSmallButton">#c6c6c6</color>
+    <color name="colorSmallButtonPressed">#b3b3b3</color>
 
-    <color name="colorAccent">#42a5f5</color>
-    <color name="colorAccentPressed">#00897b</color>
+    <color name="colorDark">@color/colorPrimaryText</color>
 
-    <color name="colorResultTextViewBackground">@color/colorPrimaryText</color>
+    <color name="colorInventoryListHeader">#dbd2dc</color>
+    <color name="colorInventoryListDelimiter">#d5ccd6</color>
+
+    <color name="colorTextInputLayoutError">#a60000</color>
 </resources>
