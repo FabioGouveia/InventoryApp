@@ -4,6 +4,8 @@
     <string name="plus_sign">+</string>
     <string name="minus_sign">-</string>
 
+    <string name="inventory_list_header">Products</string>
+    <string name="empty_inventory">Use the plus button to add\nproducts into the inventory</string>
     <string name="list_item_sell_button">Sell</string>
     <string name="item_sold_message">%1$s sold</string>
     <string name="no_more_items_message">You\'ve got no more items to sale..!</string>
@@ -12,11 +14,22 @@
     <string name="menu_item_edit">Edit item</string>
     <string name="menu_item_delete">Delete item</string>
 
+    <string name="product_inserted_successfully_message">%1$s inserted successfully</string>
+    <string name="product_inserted_failed_message">%1$s insertion failed</string>
+    <string name="product_update_successful_message">%1$s update successfully</string>
+    <string name="product_update_failed_message">%1$s update failed</string>
+    <string name="product_deleted_successfully_message">%1$s deleted successfully</string>
+    <string name="product_deleted_failed_message">%1$s deletion failed</string>
     <string name="product_name_input_hint">Product Name</string>
     <string name="product_price_input_label">Price</string>
     <string name="product_quantity_input_label">Quantity</string>
     <string name="supplier_name_input_hint">Supplier Name</string>
     <string name="supplier_phone_number_input_hint">Supplier Phone Number</string>
+
+    <string name="price_reduced">Price reduced</string>
+    <string name="price_augmented">Price augmented</string>
+    <string name="quantity_reduced">Quantity reduced</string>
+    <string name="quantity_augmented">Quantity augmented</string>
 
     <string name="call_supplier_content_description">Order now</string>
 
@@ -24,5 +37,11 @@
     <string name="error_supplier_name_empty">Supplier needs a name</string>
     <string name="error_supplier_phone_number_empty">Supplier needs a phone number</string>
     <string name="error_while_fetching_data">An error occurred while fetching data</string>
-    <string name="empty_inventory">Use the plus button to add\nproducts into the inventory</string>
+
+    <string name="dialog_unsaved_changes_msg">Discard your changes abd quit editing?</string>
+    <string name="dialog_delete_message">Are you sure you want to delete this product?</string>
+    <string name="dialog_discard_button">Discard</string>
+    <string name="dialog_keep_editing_button">Keep Editing</string>
+    <string name="dialog_delete_button">Delete</string>
+    <string name="dialog_cancel_button">Cancel</string>
 </resources>
