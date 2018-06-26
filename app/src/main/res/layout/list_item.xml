@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:descendantFocusability="blocksDescendants"
     android:paddingTop="@dimen/dimen_s">
 
     <TextView
@@ -11,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/dimen_m"
         android:layout_marginRight="@dimen/dimen_m"
-        android:background="@drawable/bgd_circular"
+        android:background="@drawable/shape_circular_small"
         android:gravity="center"
         android:textColor="@color/colorPrimary" />
 
@@ -35,15 +36,9 @@
         tools:text="12.00 $" />
 
     <Button
-        android:id="@+id/list_item_sale_button"
+        android:id="@+id/sell_button"
         style="@style/SellButton" />
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/divider_height"
-        android:layout_below="@id/list_item_sale_button"
-        android:layout_marginLeft="72dp"
-        android:layout_marginStart="72dp"
-        android:background="@color/colorPrimaryDark" />
+    <View style="@style/InventoryListDivider" />
 
 </RelativeLayout>
