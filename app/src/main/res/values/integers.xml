@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="inventory_list_dynamic_footer_padding">88</integer>
+</resources>
