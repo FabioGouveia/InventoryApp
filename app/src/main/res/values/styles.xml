@@ -1,14 +1,35 @@
 <resources>
 
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="actionBarStyle">@style/AppBar</item>
+        <item name="android:windowContentOverlay">@drawable/app_bar_shadow</item>
+    </style>
+
+    <style name="AppBar" parent="Widget.AppCompat.ActionBar">
+        <item name="android:titleTextStyle">@style/AppBarTitleTextStyle</item>
+        <item name="titleTextStyle">@style/AppBarTitleTextStyle</item>
+    </style>
+
+    <style name="AppBarTitleTextStyle" parent="@android:style/TextAppearance">
+        <item name="android:textColor">@color/colorPrimaryText</item>
+        <item name="android:textAppearance">?android:textAppearanceLarge</item>
+    </style>
+
+    <style name="AppTheme.TextInputLayout" parent="@android:style/TextAppearance">
+        <item name="android:textColor">@color/colorTextInputLayoutError</item>
     </style>
 
     <style name="LargeView">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
+    </style>
+
+    <style name="LargeView.Padding">
+        <item name="android:paddingLeft">@dimen/app_padding</item>
+        <item name="android:paddingRight">@dimen/app_padding</item>
     </style>
 
     <style name="LargeView.Vertical">
@@ -20,24 +41,61 @@
         <item name="android:layout_height">wrap_content</item>
     </style>
 
-    <style name="InventoryActivityRootView" parent="LargeView.Vertical">
-        <item name="android:gravity">center</item>
-        <item name="android:padding">@dimen/dimen_m</item>
-    </style>
-
-    <style name="QueryResultTextView">
+    <style name="EmptyView">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">0dp</item>
-        <item name="android:layout_marginBottom">@dimen/dimen_m</item>
-        <item name="android:layout_weight">1</item>
-        <item name="android:scrollbars">vertical</item>
-        <item name="android:background">@drawable/bgd_query_result_text_view</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:drawableTop">@drawable/empty_inventory</item>
+        <item name="android:gravity">center</item>
+        <item name="android:text">@string/empty_inventory</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textAppearance">?android:textAppearanceSmall</item>
     </style>
 
-    <style name="DummyInsertButton" parent="AdaptableView">
-        <item name="android:background">@drawable/bgd_add_dummy_data_btn_selector</item>
-        <item name="android:text">@string/button_add_dummy_data</item>
-        <item name="android:textColor">@color/colorPrimaryText</item>
+    <style name="SmallButton" parent="@android:style/Widget.Button.Small">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:minWidth">@dimen/small_button_min_width</item>
+        <item name="android:minHeight">@dimen/small_button_min_height</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textAppearance">?android:textAppearanceLarge</item>
+    </style>
+
+    <style name="SmallButton.Left">
+        <item name="android:background">@drawable/selector_small_button_left</item>
+    </style>
+
+    <style name="SmallButton.Right">
+        <item name="android:background">@drawable/selector_small_button_right</item>
+    </style>
+
+    <style name="SellButton">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:layout_below">@id/list_item_product_name_text_view</item>
+        <item name="android:layout_marginTop">@dimen/dimen_m</item>
+        <item name="android:layout_marginRight">@dimen/dimen_m</item>
+        <item name="android:layout_marginBottom">@dimen/dimen_m</item>
+        <item name="android:background">@drawable/selector_sell_button</item>
+        <item name="android:text">@string/list_item_sell_button</item>
+    </style>
+
+    <style name="InventoryListDivider">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/divider_height</item>
+        <item name="android:layout_below">@id/sell_button</item>
+        <item name="android:layout_marginLeft">@dimen/inventory_list_divider_margin</item>
+        <item name="android:background">@color/colorPrimaryDark</item>
+    </style>
+
+    <style name="CircularShape">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginBottom">@dimen/dimen_s</item>
+        <item name="android:layout_marginTop">@dimen/dimen_s</item>
+        <item name="android:background">@drawable/shape_circular</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/colorPrimary</item>
     </style>
 
 </resources>
